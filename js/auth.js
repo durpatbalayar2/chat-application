@@ -13,18 +13,26 @@ class Auth {
         const port = window.location.port || '3000';
         const socketUrl = `${protocol}//${hostname}:${port}`;
         
+        console.log('Connecting to WebSocket at:', socketUrl);
+        
         this.socket = io(socketUrl, {
-            transports: ['websocket'],
-            reconnection: true
+            transports: ['websocket', 'polling'],
+            reconnection: true,
+            reconnectionAttempts: 5,
+            reconnectionDelay: 1000
         });
 
         // Add connection status logging
         this.socket.on('connect', () => {
-            console.log('Connected to server');
+            console.log('Connected to server successfully');
         });
 
         this.socket.on('connect_error', (error) => {
             console.error('Connection error:', error);
+        });
+
+        this.socket.on('disconnect', (reason) => {
+            console.log('Disconnected from server:', reason);
         });
 
         this.initializeEventListeners();
