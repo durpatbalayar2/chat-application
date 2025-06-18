@@ -7,8 +7,13 @@ class Auth {
         this.currentUserSpan = document.getElementById('currentUser');
         this.logoutBtn = document.getElementById('logoutBtn');
 
-        // Initialize socket connection
-        this.socket = io('http://localhost:3001', {
+        // Initialize socket connection with dynamic URL
+        const protocol = window.location.protocol;
+        const hostname = window.location.hostname;
+        const port = window.location.port || '3000';
+        const socketUrl = `${protocol}//${hostname}:${port}`;
+        
+        this.socket = io(socketUrl, {
             transports: ['websocket'],
             reconnection: true
         });
