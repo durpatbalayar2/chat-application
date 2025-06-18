@@ -568,17 +568,34 @@ body {
 }
 
 .prompt-hints {
-    background: #222;
+    background: #23272f;
     color: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    margin: 10px 0 10px 0;
-    font-size: 0.95em;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin: 12px 0 12px 0;
+    font-size: 1em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 .prompt-hints ul {
     margin: 0;
-    padding-left: 18px;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    list-style: none;
 }
 .prompt-hints li {
-    margin-bottom: 2px;
+    background: #2d313a;
+    color: #ffd700;
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin-bottom: 0;
+    transition: background 0.2s, color 0.2s;
+    display: inline-block;
+    font-size: 1em;
+    user-select: none;
+}
+.prompt-hints li:hover {
+    background: #44495a;
+    color: #fff;
 } 

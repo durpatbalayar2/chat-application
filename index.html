@@ -90,15 +90,25 @@
             <div class="prompt-hints">
               <strong>Try asking the bot:</strong>
               <ul>
-                <li>hi</li>
-                <li>how are you</li>
-                <li>joke</li>
-                <li>fact</li>
-                <li>what is your name</li>
-                <li>help</li>
-                <li>what time is it</li>
-                <li>favorite color</li>
-                <li>do you like music</li>
+                <li>👋 hi</li>
+                <li>😊 how are you</li>
+                <li>😂 joke</li>
+                <li>🤔 fact</li>
+                <li>❓ what is your name</li>
+                <li>🆘 help</li>
+                <li>⏰ what time is it</li>
+                <li>🎨 favorite color</li>
+                <li>🎵 do you like music</li>
+                <li>💡 who created you</li>
+                <li>📚 tell me a story</li>
+                <li>🎤 sing</li>
+                <li>💃 dance</li>
+                <li>🍕 your favorite food</li>
+                <li>🎬 your favorite movie</li>
+                <li>📖 your favorite book</li>
+                <li>💻 do you code</li>
+                <li>🧩 do you like puzzles</li>
+                <li>❓ do you like questions</li>
                 <li>...and more!</li>
               </ul>
             </div>
@@ -155,5 +165,20 @@
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/app.js"></script>
+    <script>
+    // Make prompt hints clickable to fill the message input
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.prompt-hints li').forEach(li => {
+        if (li.textContent.includes('...and more!')) return;
+        li.style.cursor = 'pointer';
+        li.title = 'Click to use this prompt';
+        li.addEventListener('click', function() {
+          const text = this.textContent.replace(/^[^a-zA-Z0-9]+/, '').trim();
+          document.getElementById('messageInput').value = text;
+          document.getElementById('messageInput').focus();
+        });
+      });
+    });
+    </script>
 </body>
 </html> 
