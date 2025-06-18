@@ -25,6 +25,7 @@ io.on('connection', (socket) => {
     console.log('New client connected');
 
     socket.on('join', (username, callback) => {
+        console.log('Received join event for:', username);
         if (users.has(username)) {
             if (callback) callback({ success: false, message: 'Username already taken' });
             socket.emit('error', 'Username already taken');

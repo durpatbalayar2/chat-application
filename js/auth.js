@@ -41,10 +41,9 @@ class Auth {
         const username = document.getElementById('username').value.trim();
         
         if (username) {
-            console.log('Attempting login with username:', username);
-            // Emit join event to server (not login)
+            console.log('Emitting join event...');
             this.socket.emit('join', username, (response) => {
-                console.log('Login response:', response);
+                console.log('Join callback triggered:', response);
                 if (response && response.success) {
                     this.currentUser = username;
                     this.currentUserSpan.textContent = username;
