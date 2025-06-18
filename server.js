@@ -75,7 +75,7 @@ io.on('connection', (socket) => {
                 { pattern: /weather/i, reply: "I can't check the weather, but I hope it's nice where you are!" },
                 { pattern: /bye|goodbye/i, reply: "Goodbye! Have a great day!" },
                 { pattern: /thank(s| you)/i, reply: "You're welcome!" },
-                { pattern: /who created you/i, reply: "I was created by a clever developer!" },
+                { pattern: /who created you/i, reply: "I was created by a durpat developer!" },
                 { pattern: /your favorite color/i, reply: "I like all colors equally, but blue is quite nice!" },
                 { pattern: /your favorite food/i, reply: "I don't eat, but I hear pizza is popular!" },
                 { pattern: /your favorite movie/i, reply: "I love sci-fi movies, especially ones about AI!" },
