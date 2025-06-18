@@ -41,9 +41,9 @@ io.on('connection', (socket) => {
 
     socket.on('message', (data) => {
         io.to(data.room).emit('message', {
-            user: socket.username,
-            text: data.text,
-            time: new Date().toLocaleTimeString()
+            username: socket.username,
+            message: data.message,
+            timestamp: new Date().toISOString()
         });
     });
 
