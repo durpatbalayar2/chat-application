@@ -565,4 +565,20 @@ body {
         width: 100%;
         left: 0;
     }
+}
+
+.prompt-hints {
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0 10px 0;
+    font-size: 0.95em;
+}
+.prompt-hints ul {
+    margin: 0;
+    padding-left: 18px;
+}
+.prompt-hints li {
+    margin-bottom: 2px;
 } 
