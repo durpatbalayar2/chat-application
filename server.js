@@ -21,6 +21,9 @@ const io = socketIo(server, {
 const users = new Map();
 const rooms = new Set(['general']);
 
+// Track which users have sent a message in which rooms
+const userFirstMessage = new Map(); // key: `${username}:${room}`, value: true/false
+
 io.on('connection', (socket) => {
     console.log('New client connected');
 
@@ -45,6 +48,19 @@ io.on('connection', (socket) => {
             message: data.message,
             timestamp: new Date().toISOString()
         });
+
+        // --- Welcome Bot Logic ---
+        const userRoomKey = `${socket.username}:${data.room}`;
+        if (!userFirstMessage.get(userRoomKey)) {
+            userFirstMessage.set(userRoomKey, true);
+            setTimeout(() => {
+                io.to(data.room).emit('message', {
+                    username: 'ChatBot',
+                    message: `Welcome to the room, ${socket.username}! If you need help, just type 'help'.`,
+                    timestamp: new Date().toISOString()
+                });
+            }, 1000);
+        }
 
         // Simple echo bot: if only one user in the room, bot responds
         const clients = io.sockets.adapter.rooms.get(data.room);
