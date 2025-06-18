@@ -7,14 +7,9 @@ class Auth {
         this.currentUserSpan = document.getElementById('currentUser');
         this.logoutBtn = document.getElementById('logoutBtn');
 
-        // Initialize socket connection with dynamic URL
-        const protocol = window.location.protocol;
-        const hostname = window.location.hostname;
-        const port = window.location.port || '3000';
-        const socketUrl = `${protocol}//${hostname}:${port}`;
-        
+        // Use window.location.origin for cross-environment compatibility
+        const socketUrl = window.location.origin;
         console.log('Connecting to WebSocket at:', socketUrl);
-        
         this.socket = io(socketUrl, {
             transports: ['websocket', 'polling'],
             reconnection: true,
