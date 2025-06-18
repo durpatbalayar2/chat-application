@@ -42,8 +42,8 @@ class Auth {
         
         if (username) {
             console.log('Attempting login with username:', username);
-            // Emit login event to server
-            this.socket.emit('login', { username }, (response) => {
+            // Emit join event to server (not login)
+            this.socket.emit('join', username, (response) => {
                 console.log('Login response:', response);
                 if (response && response.success) {
                     this.currentUser = username;

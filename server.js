@@ -24,8 +24,9 @@ const rooms = new Set(['general']);
 io.on('connection', (socket) => {
     console.log('New client connected');
 
-    socket.on('join', (username) => {
+    socket.on('join', (username, callback) => {
         if (users.has(username)) {
+            if (callback) callback({ success: false, message: 'Username already taken' });
             socket.emit('error', 'Username already taken');
             return;
         }
@@ -34,6 +35,7 @@ io.on('connection', (socket) => {
         socket.join('general');
         io.emit('userJoined', username);
         io.emit('userList', Array.from(users.keys()));
+        if (callback) callback({ success: true });
     });
 
     socket.on('message', (data) => {
