@@ -12,6 +12,8 @@ A modern, real-time chat application built with HTML, CSS, and JavaScript using 
 - Message timestamps
 - User presence indicators
 - Room management (create/join)
+- **Smart ChatBot** with 50+ auto-reply prompts
+- **Auto prompt hints**: visible, clickable suggestions for users
 
 ## Project Structure
 
@@ -25,8 +27,6 @@ chat-application/
 │   └── auth.js        # Authentication handling
 ├── server.js          # WebSocket server
 ├── package.json       # Project dependencies
-├── render.yaml        # Render deployment config
-├── Procfile          # Heroku deployment config
 └── README.md          # This file
 ```
 
@@ -46,37 +46,33 @@ chat-application/
 
 ## Deployment Instructions
 
-### Option 1: Deploy to Render.com (Recommended)
-1. Create a free account on [Render.com](https://render.com)
-2. Push your code to GitHub
-3. In Render dashboard, click "New +" and select "Web Service"
-4. Connect your GitHub repository
-5. Render will automatically detect the configuration from `render.yaml`
-6. Click "Create Web Service"
+### Deploy to Railway (Recommended)
+1. Push your code to GitHub
+2. Go to [Railway.app](https://railway.app)
+3. Create a new project and link your GitHub repo
+4. Railway will auto-detect and deploy your Node.js app
+5. Share your Railway app URL with friends!
 
-### Option 2: Deploy to Railway.app
-1. Create a free account on [Railway.app](https://railway.app)
-2. Push your code to GitHub
-3. In Railway dashboard, click "New Project"
-4. Select "Deploy from GitHub repo"
-5. Select your repository
-6. Railway will automatically deploy your application
+## ChatBot & Auto Prompt Hints
 
-### Option 3: Deploy to Heroku
-1. Create a free account on [Heroku](https://heroku.com)
-2. Install Heroku CLI
-3. Login to Heroku:
-   ```bash
-   heroku login
-   ```
-4. Create a new Heroku app:
-   ```bash
-   heroku create your-app-name
-   ```
-5. Deploy your application:
-   ```bash
-   git push heroku main
-   ```
+- The ChatBot responds to 50+ different prompts, including greetings, questions, jokes, facts, and more.
+- Example prompts are always visible above the message input.
+- **Click any prompt** to auto-fill the message input and try it instantly!
+- The ChatBot will greet new users and suggest what to try.
+
+### Example Prompts
+- 👋 hi
+- 😊 how are you
+- 😂 joke
+- 🤔 fact
+- ❓ what is your name
+- 🆘 help
+- ⏰ what time is it
+- 🎨 favorite color
+- 🎵 do you like music
+- 💡 who created you
+- 📚 tell me a story
+- ...and more!
 
 ## Technologies Used
 
