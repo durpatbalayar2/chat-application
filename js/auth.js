@@ -7,10 +7,8 @@ class Auth {
         this.currentUserSpan = document.getElementById('currentUser');
         this.logoutBtn = document.getElementById('logoutBtn');
 
-        // Use window.location.origin for cross-environment compatibility
-        const socketUrl = window.location.origin;
-        console.log('Connecting to WebSocket at:', socketUrl);
-        this.socket = io(socketUrl, {
+        // Use io() with only options for cross-environment compatibility
+        this.socket = io({
             transports: ['websocket', 'polling'],
             reconnection: true,
             reconnectionAttempts: 5,
