@@ -45,6 +45,18 @@ io.on('connection', (socket) => {
             message: data.message,
             timestamp: new Date().toISOString()
         });
+
+        // Simple echo bot: if only one user in the room, bot responds
+        const clients = io.sockets.adapter.rooms.get(data.room);
+        if (clients && clients.size === 1) {
+            setTimeout(() => {
+                io.to(data.room).emit('message', {
+                    username: 'ChatBot',
+                    message: `You said: "${data.message}"`,
+                    timestamp: new Date().toISOString()
+                });
+            }, 1000); // Bot replies after 1 second
+        }
     });
 
     socket.on('createRoom', (roomName) => {
