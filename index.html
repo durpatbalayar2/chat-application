@@ -85,7 +85,8 @@
                 </div>
             </div>
             <div class="messages" id="messageArea"></div>
-            <!-- Prompt Hints Section -->
+            <div id="typingIndicator" class="typing-indicator hidden"></div>
+            <!-- Prompt Hints Section: always visible above the message input -->
             <div class="prompt-hints">
               <strong>Try asking the bot:</strong>
               <ul>
@@ -101,7 +102,6 @@
                 <li>...and more!</li>
               </ul>
             </div>
-            <div id="typingIndicator" class="typing-indicator hidden"></div>
             <div class="message-input">
                 <div class="formatting-tools">
                     <button class="format-btn" data-format="bold" title="Bold">
